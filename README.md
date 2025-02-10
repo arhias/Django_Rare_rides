@@ -29,7 +29,7 @@
 1. **Клонувати репозиторій через Git**:
 
 ```bash
-git clone https://github.com/yourusername/Rare_Rides_Django.git
+git clone https://github.com/arhias/Rare_Rides_Django.git
 cd Rare_Rides_Django
 ```
 
