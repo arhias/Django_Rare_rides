@@ -1,0 +1,70 @@
+{% extends "garage/base.html" %}
+
+{% block title %}Rare Rides - Список авто{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4 title-animated">Rare Rides</h1>
+
+    <div class="filter-container">
+        <form method="GET" action="{% url 'car_list' %}" class="filter-form d-flex flex-wrap gap-3">
+            <div class="col-md-3 col-12">
+                <input type="text" name="q" class="form-control" placeholder="Пошук..." value="{{ query }}">
+            </div>
+            <div class="col-md-3 col-12">
+                <select name="brand" class="form-control">
+                    <option value="">Всі марки</option>
+                    {% for brand in all_brands %}
+                        <option value="{{ brand }}" {% if brand == selected_brand %}selected{% endif %}>{{ brand }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3 col-12">
+                <input type="number" name="year" class="form-control" placeholder="📆 Рік" value="{{ selected_year }}">
+            </div>
+            <div class="col-md-3 col-12">
+                <select name="type" class="form-control">
+                    <option value="">Всі типи</option>
+                    {% for car_type in all_types %}
+                        <option value="{{ car_type }}" {% if car_type == selected_type %}selected{% endif %}>{{ car_type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2 col-12">
+                <button type="submit" class="btn btn-gold w-100">Шукати</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        {% for car in cars %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card mb-4 shadow-sm car-card">
+                    <img src="{{ car.image }}" class="card-img-top car-img" alt="{{ car.brand }} {{ car.model }}">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+                        <p class="car-description">{{ car.description|truncatechars:50 }}</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'car_detail' car.id %}" class="btn btn-gold w-100">Детальніше</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <nav>
+        <ul class="pagination justify-content-center">
+            {% if cars.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">⏮ Перша</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ cars.previous_page_number }}">⬅ Попередня</a></li>
+            {% endif %}
+
+            <li class="page-item active"><span class="page-link">{{ cars.number }}</span></li>
+
+            {% if cars.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ cars.next_page_number }}">Наступна ➡</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ cars.paginator.num_pages }}">Остання ⏭</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "garage/base.html" %}
+
+{% block title %}Марки автомобилей{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Список марок автомобилей</h1>
+
+    <ul class="list-group">
+        {% for brand in all_brands %}
+            <li class="list-group-item">
+                <a href="{% url 'car_list' %}?brand={{ brand }}" class="btn-brand">
+                    {{ brand }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

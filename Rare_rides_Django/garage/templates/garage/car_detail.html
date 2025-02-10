@@ -1,0 +1,18 @@
+{% extends "garage/base.html" %}
+
+{% block title %}{{ car.brand }} {{ car.model }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ car.image }}" class="img-fluid rounded shadow-sm" alt="{{ car.brand }} {{ car.model }}">
+        </div>
+        <div class="col-md-6">
+            <h1>{{ car.brand }} {{ car.model }}</h1>
+            <p><strong>Рік:</strong> {{ car.year }}</p>
+            <p><strong>Ціна:</strong> ${{ car.price }}</p>
+            <p class="car-description"><strong>Опис:</strong> {{ car.description }}</p>
+            <a href="{% url 'car_list' %}" class="btn btn-secondary mt-3">⬅ Назад до списку</a>
+        </div>
+    </div>
+{% endblock %}
