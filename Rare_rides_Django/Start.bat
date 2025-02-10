@@ -1,41 +1,42 @@
 @echo off
 chcp 65001
 
-python --version >nul 2>nul
+py --version >nul 2>nul
 if %ERRORLEVEL% neq 0 (
-    echo Python не знайдено. Відкриваю сторінку для завантаження Python...
-    start https://www.python.org/downloads/ 
-    echo Будь ласка, завантажте та встановіть Python, а потім запустіть скрипт знову.
+    echo Python is not found. Opening the Python download page...
+    start https://www.python.org/downloads/
+    echo Please download and install Python, then run the script again.
     pause
     exit /b
 )
 
-python -m pip --version >nul 2>nul
+py -m pip --version >nul 2>nul
 if %ERRORLEVEL% neq 0 (
-    echo pip не знайдено. Встановлюю pip...
-    python -m ensurepip --upgrade
+    echo pip is not found. Installing pip...
+    py -m ensurepip --upgrade
 )
 
-python -m django --version >nul 2>nul
+py -m django --version >nul 2>nul
 if %ERRORLEVEL% neq 0 (
-    echo Django не знайдено. Встановлюю Django...
-    pip install django
+    echo Django is not found. Installing Django...
+    py -m pip install django
 )
 
 if exist requirements.txt (
-    echo Встановлюю залежності з requirements.txt...
-    pip install -r requirements.txt
+    echo Installing dependencies from requirements.txt...
+    py -m pip install -r requirements.txt
 ) else (
-    echo requirements.txt не знайдено. Створюю його...
+    echo requirements.txt not found. Creating it...
     echo django > requirements.txt
-    pip install -r requirements.txt
+    py -m pip install -r requirements.txt
 )
-echo Застосовую міграції бази даних...
-python manage.py migrate
 
-echo Запускаю Django сервер на порту 8080...
+echo Applying database migrations...
+py manage.py migrate
+
+echo Starting Django server on port 8080...
 start http://127.0.0.1:8080
 
-python manage.py runserver 8080
+py manage.py runserver 8080
 
 pause
