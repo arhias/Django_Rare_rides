@@ -33,7 +33,7 @@ git clone https://github.com/arhias/Rare_Rides_Django.git
 cd Rare_Rides_Django
 ```
 
-2. **Або скачати ZIP-архів репозиторію** з [GitHub](https://github.com/arhias/Rare_Rides_Django) і розархівувати його на вашому комп'ютері.
+2. **Або скачати ZIP-архів репозиторію** з [GitHub](https://github.com/arhias/Django_Rare_rides.git) і розархівувати його на вашому комп'ютері.
 
 ### Крок 2: Запустіть бат-файл
 
@@ -51,7 +51,7 @@ cd Rare_Rides_Django
 Переконайтеся, що Python та pip встановлені:
 
 ```bash
-python --version
+py --version
 pip --version
 ```
 
@@ -110,7 +110,7 @@ python manage.py migrate
 Запустіть сервер розробки:
 
 ```bash
-python manage.py runserver
+py manage.py runserver
 ```
 
 Тепер сайт доступний за адресою: `http://127.0.0.1:8000/`.
@@ -124,7 +124,7 @@ http://127.0.0.1:8000/admin
 Для доступу до панелі адміністратора створіть суперкористувача:
 
 ```bash
-python manage.py createsuperuser
+py manage.py createsuperuser
 ```
 
 ### Структура проекту
@@ -143,7 +143,7 @@ python manage.py createsuperuser
 1. Якщо ви ще не створили суперкористувача, виконайте наступну команду:
 
 ```bash
-python manage.py createsuperuser
+py manage.py createsuperuser
 ```
 
 2. Пройдіть кроки для створення облікового запису суперкористувача.
