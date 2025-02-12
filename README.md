@@ -58,7 +58,7 @@ pip --version
 Якщо pip не встановлений, виконайте команду для його інсталяції:
 
 ```bash
-python -m ensurepip --upgrade
+py -m ensurepip --upgrade
 ```
 
 ### Крок 4: Налаштування віртуального середовища
@@ -67,7 +67,7 @@ python -m ensurepip --upgrade
 
    На Windows:
    ```bash
-   python -m venv venv
+   py -m venv venv
    ```
 
    На macOS/Linux:
@@ -102,7 +102,7 @@ pip install -r requirements.txt
 Запустіть міграції для налаштування бази даних:
 
 ```bash
-python manage.py migrate
+py manage.py migrate
 ```
 
 ### Крок 7: Запуск сервера
