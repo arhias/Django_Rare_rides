@@ -14,7 +14,7 @@ class Car(models.Model):
     price = models.DecimalField(max_digits=15, decimal_places=2)
     description = models.TextField()
     image = models.URLField()
-    car_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default='supercar')  # ✅ Тип авто
+    car_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default='supercar') 
 
     def __str__(self):
         return f"{self.brand} {self.model}"
