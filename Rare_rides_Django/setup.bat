@@ -37,6 +37,6 @@ py manage.py migrate
 echo Starting Django server on port 8080...
 start http://127.0.0.1:8080
 
-py manage.py runserver 8000
+py manage.py runserver 8080
 
 pause
