@@ -34,9 +34,9 @@ if exist requirements.txt (
 echo Applying database migrations...
 py manage.py migrate
 
-echo Starting Django server on port 8000...
-start http://127.0.0.1:8000
+echo Starting Django server on port 8765...
+start http://127.0.0.1:8765
 
-py manage.py runserver 8000
+py manage.py runserver 8765
 
 pause
